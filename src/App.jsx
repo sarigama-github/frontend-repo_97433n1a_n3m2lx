@@ -10,11 +10,11 @@ function App() {
   const refresh = () => setRefreshKey(k=>k+1)
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sky-50 to-emerald-50">
-      <header className="px-6 py-4 border-b bg-white/70 backdrop-blur sticky top-0">
+    <div className="min-h-screen bg-black">
+      <header className="px-6 py-4 border-b border-slate-800 bg-black/70 backdrop-blur sticky top-0">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-slate-800">GetCollectr • One Piece TCG Portfolio</h1>
-          <a href="/test" className="text-sm text-blue-700 underline">Test backend</a>
+          <h1 className="text-2xl font-bold text-slate-100">GetCollectr • One Piece TCG Portfolio</h1>
+          <a href="/test" className="text-sm text-emerald-400 underline">Test backend</a>
         </div>
       </header>
 
@@ -27,9 +27,9 @@ function App() {
           </div>
           <div className="space-y-6">
             <AddMockData onDone={refresh} />
-            <div className="bg-white border rounded-lg p-4">
-              <h3 className="font-semibold mb-2">Trend & Analytics</h3>
-              <p className="text-sm text-gray-600">La versione demo mostra KPI principali. Possiamo estendere con grafici P&L, Biggest Movers e serie storiche in tempo reale.</p>
+            <div className="card p-4">
+              <h3 className="card-header mb-2">Trend & Analytics</h3>
+              <p className="text-sm text-slate-400">KPI principali con grafici P&L e serie storiche in tempo reale (demo).</p>
             </div>
           </div>
         </div>

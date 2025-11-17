@@ -35,23 +35,30 @@ export default function CatalogSearch({ onAdd }){
   }
 
   return (
-    <div className="bg-white rounded-lg border p-4">
+    <div className="card p-4">
       <div className="flex gap-2">
-        <input value={q} onChange={e=>setQ(e.target.value)} placeholder="Cerca carta o prodotto" className="flex-1 border rounded px-3 py-2" />
-        <button onClick={search} className="px-4 py-2 bg-blue-600 text-white rounded">{loading? '...' : 'Cerca'}</button>
+        <input value={q} onChange={e=>setQ(e.target.value)} placeholder="Cerca carta o prodotto" className="input flex-1" />
+        <button onClick={search} className="btn btn-primary">{loading? '...' : 'Cerca'}</button>
       </div>
       <div className="mt-3 space-y-2 max-h-64 overflow-auto">
         {items.map(it=> (
-          <div key={it._id} className="flex items-center justify-between border rounded p-2">
-            <div>
-              <p className="font-medium">{it.name}</p>
-              <p className="text-xs text-gray-500">{it.set_name} • {it.number} • {it.category}</p>
+          <div key={it._id} className="flex items-center justify-between p-2 rounded-lg border border-slate-800 bg-slate-900/50">
+            <div className="flex items-center gap-3">
+              {it.image_url ? (
+                <img src={it.image_url} alt={it.name} className="w-12 h-16 object-cover rounded-md border border-slate-800" />
+              ) : (
+                <div className="w-12 h-16 rounded-md border border-slate-800 bg-slate-950/50 flex items-center justify-center text-slate-600 text-xs">no img</div>
+              )}
+              <div>
+                <p className="font-medium text-slate-100">{it.name}</p>
+                <p className="text-xs text-slate-400">{it.set_name} • {it.number} • {it.category}</p>
+              </div>
             </div>
-            <button onClick={()=>addQuick(it)} className="px-3 py-1 text-sm bg-emerald-600 text-white rounded">Aggiungi</button>
+            <button onClick={()=>addQuick(it)} className="btn btn-secondary">Aggiungi</button>
           </div>
         ))}
         {(!items || items.length===0) && (
-          <p className="text-sm text-gray-500">Nessun risultato. Prova a creare un elemento nel catalogo.</p>
+          <p className="text-sm text-slate-500">Nessun risultato. Prova a creare un elemento nel catalogo.</p>
         )}
       </div>
     </div>

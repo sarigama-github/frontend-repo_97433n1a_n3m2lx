@@ -18,29 +18,48 @@
   }
 
   body {
-    @apply antialiased;
+    @apply antialiased bg-black text-slate-100;
   }
 }
 
-/* Custom utility classes for shadcn/ui patterns */
+/* Force dark theme */
+:root, html, body, #root { @apply bg-black text-slate-100; }
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-slate-800 bg-slate-900/60 backdrop-blur shadow-sm;
+  }
+  .card-header {
+    @apply text-slate-200 font-semibold;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-colors;
+  }
+  .btn-primary {
+    @apply bg-emerald-600 text-white hover:bg-emerald-500;
+  }
+  .btn-secondary {
+    @apply bg-slate-800 text-slate-100 hover:bg-slate-700 border border-slate-700;
+  }
+  .input {
+    @apply bg-black border border-slate-800 rounded-md px-3 py-2 text-sm placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-600/50;
+  }
+  .select {
+    @apply bg-black border border-slate-800 rounded-md px-3 py-2 text-sm focus:outline-none;
+  }
+  .divider {
+    @apply border-t border-slate-800;
+  }
+}
+
+/* Subtle animations */
 @layer utilities {
   .animate-in {
     animation-name: animateIn;
-    animation-duration: 350ms;
-    --tw-enter-opacity: initial;
-    --tw-enter-scale: initial;
-    --tw-enter-rotate: initial;
-    --tw-enter-translate-x: initial;
-    --tw-enter-translate-y: initial;
+    animation-duration: 300ms;
   }
-
   .animate-out {
     animation-name: animateOut;
-    animation-duration: 350ms;
-    --tw-exit-opacity: initial;
-    --tw-exit-scale: initial;
-    --tw-exit-rotate: initial;
-    --tw-exit-translate-x: initial;
-    --tw-exit-translate-y: initial;
+    animation-duration: 300ms;
   }
 }

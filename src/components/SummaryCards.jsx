@@ -22,9 +22,9 @@ export default function SummaryCards() {
   return (
     <div className="w-full">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-semibold">Portfolio</h2>
+        <h2 className="text-xl font-semibold text-slate-100">Portfolio</h2>
         <select
-          className="border rounded px-2 py-1 text-sm"
+          className="select"
           value={currency}
           onChange={(e)=>{setCurrency(e.target.value); load(e.target.value)}}
         >
@@ -32,19 +32,20 @@ export default function SummaryCards() {
         </select>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <Card title={`Total Value (${currency})`} value={summary ? fmt(summary.total_value, currency) : '...'} trend={summary ? summary.unrealized_pnl : null} />
+        <Card title={`Total Value (${currency})`} value={summary ? fmt(summary.total_value, currency) : '...'} highlight />
         <Card title={`Total Cost (${currency})`} value={summary ? fmt(summary.total_cost, currency) : '...'} />
-        <Card title={`Unrealized P&L (${currency})`} value={summary ? fmt(summary.unrealized_pnl, currency) : '...'} highlight />
+        <Card title={`Unrealized P&L (${currency})`} value={summary ? fmt(summary.unrealized_pnl, currency) : '...'} accent={summary && summary.unrealized_pnl >= 0 ? 'up' : 'down'} />
       </div>
     </div>
   )
 }
 
-function Card({ title, value, highlight }){
+function Card({ title, value, highlight, accent }){
+  const accentCls = accent === 'up' ? 'text-emerald-400' : accent === 'down' ? 'text-rose-400' : 'text-slate-200'
   return (
-    <div className={`p-4 rounded-lg border bg-white ${highlight ? 'border-emerald-300' : 'border-gray-200'}`}>
-      <p className="text-sm text-gray-500">{title}</p>
-      <p className={`text-2xl font-semibold mt-1 ${highlight ? 'text-emerald-600' : 'text-gray-800'}`}>{value}</p>
+    <div className={`card p-4 ${highlight ? 'border-emerald-700/50' : ''}`}>
+      <p className="text-sm text-slate-400">{title}</p>
+      <p className={`text-2xl font-semibold mt-1 ${accentCls}`}>{value}</p>
     </div>
   )
 }
