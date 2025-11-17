@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import SummaryCards from './components/SummaryCards'
 import CatalogSearch from './components/CatalogSearch'
 import Holdings from './components/Holdings'
 import AddMockData from './components/AddMockData'
+import Analytics from './components/Analytics'
 
 function App() {
   const [refreshKey, setRefreshKey] = useState(0)
@@ -27,10 +28,7 @@ function App() {
           </div>
           <div className="space-y-6">
             <AddMockData onDone={refresh} />
-            <div className="card p-4">
-              <h3 className="card-header mb-2">Trend & Analytics</h3>
-              <p className="text-sm text-slate-400">KPI principali con grafici P&L e serie storiche in tempo reale (demo).</p>
-            </div>
+            <Analytics />
           </div>
         </div>
       </main>
